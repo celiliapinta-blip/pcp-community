@@ -1,4 +1,6 @@
-/* CONFIGURACIÓN GENERAL */
+/* ===========================
+   CONFIGURACIÓN GENERAL
+=========================== */
 
 * {
     margin: 0;
@@ -6,120 +8,92 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #0d1117;
-    color: white;
+    background: #0b1220;
+    color: #ffffff;
     line-height: 1.6;
 }
 
-/* ENCABEZADO */
+/* ===========================
+   ENCABEZADO
+=========================== */
 
 header {
-    background: #161b22;
-    padding: 20px;
-    text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    background: #111827;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-bottom: 2px solid #d4af37;
 }
 
 header h1 {
     margin-bottom: 15px;
+    color: #ffffff;
 }
 
-/* MENÚ */
+/* ===========================
+   MENÚ
+=========================== */
 
 nav {
     display: flex;
+
     justify-content: center;
-    gap: 20px;
+
     flex-wrap: wrap;
+
+    gap: 15px;
 }
 
 nav a {
     color: white;
+
     text-decoration: none;
+
     font-weight: bold;
-    transition: 0.3s;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    transition: .3s;
 }
 
 nav a:hover {
-    color: gold;
+    background: #d4af37;
+    color: black;
 }
 
-/* SECCIONES */
+/* ===========================
+   SECCIONES
+=========================== */
 
 section {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    background: #161f31;
+
+    border-radius: 15px;
+
+    padding: 25px;
 }
 
 section h2 {
     margin-bottom: 20px;
-    border-bottom: 2px solid gold;
-    padding-bottom: 10px;
-}
 
-/* BARRA DE BÚSQUEDA */
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-}
-
-/* TABLA */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background: gold;
-    color: black;
-    padding: 12px;
-}
-
-td {
-    background: #1f2937;
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #333;
-}
-
-/* TOP 3 */
-
-#top3 {
-    text-align: center;
-}
-
-#primerLugar,
-#segundoLugar,
-#tercerLugar {
-    background: #1f2937;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-}
-
-/* ESTADÍSTICAS */
-
-#estadisticasContenido {
-    background: #1f2937;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* SALÓN DE LA FAMA */
-
-#salonContenido {
-    background: #1f2937;
-    padding: 20px;
-    border-radius: 10px;
+    color: #d4af37;
 }
