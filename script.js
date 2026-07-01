@@ -223,11 +223,15 @@ async function iniciar() {
 
     const ahora = new Date();
 
-    const elemento = document.getElementById("ultimaActualizacion");
+    document.getElementById("ultimaActualizacion").textContent =
+    "Última actualización: " + ahora.toLocaleString();
 
-    if (elemento) {
-        elemento.textContent =
-        "Última actualización: " + ahora.toLocaleString();
+    // 🎵 MÚSICA
+    const musica = document.getElementById("bgMusic");
+
+    if (musica) {
+        musica.volume = 0.3;
+        musica.play().catch(() => {});
     }
 }
 
