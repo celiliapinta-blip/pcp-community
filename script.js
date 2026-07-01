@@ -149,6 +149,26 @@ function mostrarSalonFama() {
 
 }
 
+function mostrarHistorial() {
+
+    const tabla = document.getElementById("tablaHistorial");
+
+    if (!tabla) return;
+
+    tabla.innerHTML = "";
+
+    historial.forEach(h => {
+
+        tabla.innerHTML += `
+            <tr>
+                <td>${h.temporada}</td>
+                <td>${h.campeon}</td>
+                <td>${h.pais}</td>
+            </tr>
+        `;
+    });
+}
+
 /* ==========================================
    TOP 3
 ========================================== */
