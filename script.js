@@ -88,7 +88,7 @@ function mostrarSalonFama() {
             <div class="fama-card">
                 <h3>🏆 ${registro.temporada}</h3>
                 <p><strong>Campeón:</strong> ${registro.campeon}</p>
-<p><strong>Equipo:</strong> ${registro.puntos}</p>
+<p><strong>equipo:</strong> ${registro.puntos}</p>
             </div>
         `;
     });
