@@ -294,3 +294,117 @@ tbody tr:nth-child(3) td{
     font-weight:bold;
 
 }
+
+/* =========================
+      TOP 3
+========================= */
+
+#top3{
+
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:35px;
+
+}
+
+.podio{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:20px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.podio-card{
+
+    width:220px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.podio-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.podio-card span{
+
+    font-size:42px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+}
+
+.podio-card h3{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+.podio-card p{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+/* Oro */
+
+.primero{
+
+    background:linear-gradient(180deg,#ffe066,#d4af37);
+
+    color:#111;
+
+    transform:scale(1.08);
+
+}
+
+/* Plata */
+
+.segundo{
+
+    background:linear-gradient(180deg,#eeeeee,#bdbdbd);
+
+    color:#111;
+
+}
+
+/* Bronce */
+
+.tercero{
+
+    background:linear-gradient(180deg,#d48a42,#8b5a2b);
+
+    color:white;
+
+}
