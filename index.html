@@ -3,223 +3,130 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCP Community</title>
 
-    <title>PCP Community</title>
+<meta name="description" content="Ranking Oficial PCP Community">
 
-    <meta name="description" content="Ranking Oficial de PCP Community">
+<link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- HEADER -->
+<header class="header">
 
-    <header class="header">
+<div class="logo">
 
-        <div class="logo">
+<h1>⚽ PCP Community</h1>
 
-            <h1>⚽ PCP Community</h1>
+<p>Ranking Oficial</p>
 
-        </div>
+</div>
 
-        <nav class="menu">
+<nav>
 
-            <a href="#ranking">Ranking</a>
+<a href="#ranking">Ranking</a>
 
-            <a href="#top3">Top 3</a>
+<a href="#top3">Top 3</a>
 
-            <a href="#estadisticas">Estadísticas</a>
+<a href="#estadisticas">Estadísticas</a>
 
-            <a href="#salon">Salón de la Fama</a>
+<a href="#salon">Salón de la Fama</a>
 
-        </nav>
+</nav>
 
-    </header>
+</header>
 
-    <!-- HERO -->
+<section class="hero">
 
-    <section class="hero">
+<h2>Temporada Oficial</h2>
 
-        <div class="hero-overlay">
+<p>Consulta el ranking actualizado automáticamente desde Google Sheets.</p>
 
-            <h2>Ranking Oficial</h2>
+</section>
 
-            <p>Consulta las posiciones, el Top 3 y las estadísticas de PCP Community.</p>
+<section id="ranking" class="contenedor">
 
-        </div>
+<h2>🏆 Ranking General</h2>
 
-    </section>
+<input
+type="text"
+id="buscarJugador"
+placeholder="Buscar jugador...">
 
-    <!-- RANKING -->
+<div class="tabla">
 
-    <section id="ranking" class="contenedor">
+<table>
 
-        <div class="titulo">
+<thead>
 
-            <h2>🏆 Ranking</h2>
+<tr>
 
-        </div>
+<th>#</th>
 
-        <input
-            type="text"
-            id="buscarJugador"
-            placeholder="🔍 Buscar jugador...">
+<th>Jugador</th>
 
-        <div class="tabla">
+<th>Puntos</th>
 
-            <table>
+</tr>
 
-                <thead>
+</thead>
 
-                    <tr>
+<tbody id="tablaRanking">
 
-                        <th>#</th>
+</tbody>
 
-                        <th>Jugador</th>
+</table>
 
-                        <th>Puntos</th>
+</div>
 
-                    </tr>
+</section>
 
-                </thead>
+<section id="top3" class="contenedor">
 
-                <tbody id="tablaRanking">
+<h2>🥇 Top 3</h2>
 
-                </tbody>
+<div class="podio">
 
-            </table>
+<div class="podio-card plata">
 
-        </div>
+<h3>🥈</h3>
 
-    </section>
+<h4 id="segundoNombre">-</h4>
 
-    <!-- TOP 3 -->
+<p id="segundoPuntos">0 pts</p>
 
-    <section id="top3" class="contenedor">
+</div>
 
-    <h2>🏆 Top 3</h2>
+<div class="podio-card oro">
 
-    <div id="contenidoTop3"></div>
+<h3>🥇</h3>
 
-        </div>
+<h4 id="primeroNombre">-</h4>
 
-        <div class="podio">
+<p id="primeroPuntos">0 pts</p>
 
-            <div class="podio-card segundo">
+</div>
 
-                <span>🥈</span>
+<div class="podio-card bronce">
 
-                <h3 id="segundoNombre">Jugador</h3>
+<h3>🥉</h3>
 
-                <p id="segundoPuntos">0 pts</p>
+<h4 id="terceroNombre">-</h4>
 
-            </div>
+<p id="terceroPuntos">0 pts</p>
 
-            <div class="podio-card primero">
+</div>
 
-                <span>🥇</span>
+</div>
 
-                <h3 id="primeroNombre">Jugador</h3>
-
-                <p id="primeroPuntos">0 pts</p>
-
-            </div>
-
-            <div class="podio-card tercero">
-
-                <span>🥉</span>
-
-                <h3 id="terceroNombre">Jugador</h3>
-
-                <p id="terceroPuntos">0 pts</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ESTADÍSTICAS -->
-
-    <section id="estadisticas" class="contenedor">
-
-        <div class="titulo">
-
-            <h2>📊 Estadísticas</h2>
-
-        </div>
-
-        <div class="estadisticas-grid">
-
-            <div class="estadistica-card">
-
-                <h3>Total de jugadores</h3>
-
-                <p id="totalJugadores">0</p>
-
-            </div>
-
-            <div class="estadistica-card">
-
-                <h3>Líder actual</h3>
-
-                <p id="liderActual">-</p>
-
-            </div>
-
-            <div class="estadistica-card">
-
-                <h3>Total de puntos</h3>
-
-                <p id="totalPuntos">0</p>
-
-            </div>
-
-            <div class="estadistica-card">
-
-                <h3>Promedio de puntos</h3>
-
-                <p id="promedioPuntos">0</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- SALÓN DE LA FAMA -->
-
-    <section id="salon" class="contenedor">
-
-        <div class="titulo">
-
-            <h2>🌟 Salón de la Fama</h2>
-
-        </div>
-
-        <div id="salonFama">
-
-            <!-- Se llenará automáticamente -->
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <p>© 2026 PCP Community</p>
-
-    </footer>
-
-    <script src="script.js"></script>
-
-</body>
-
-</html>
+</section>
