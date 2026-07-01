@@ -242,3 +242,37 @@ async function iniciar() {
 iniciar();
 
 setInterval(iniciar, 10000);
+
+/* ==========================================
+   🎵 MÚSICA DE FONDO (BOTÓN CONTROL)
+========================================== */
+
+const botonMusica = document.getElementById("btnMusica");
+const musica = document.getElementById("bgMusic");
+
+let reproduciendo = false;
+
+if (botonMusica && musica) {
+
+    botonMusica.addEventListener("click", () => {
+
+        if (!reproduciendo) {
+
+            musica.volume = 0.3;
+            musica.play();
+            reproduciendo = true;
+
+            botonMusica.textContent = "⏸ Pausar música";
+
+        } else {
+
+            musica.pause();
+            reproduciendo = false;
+
+            botonMusica.textContent = "▶ Música";
+
+        }
+
+    });
+
+}
