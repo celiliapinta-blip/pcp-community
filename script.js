@@ -258,3 +258,31 @@ if (buscador) {
 
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const boton = document.getElementById("btnMusica");
+    const musica = document.getElementById("bgMusic");
+
+    if (!boton || !musica) return;
+
+    boton.addEventListener("click", () => {
+
+        if (musica.paused) {
+
+            musica.volume = 0.3;
+            musica.play();
+
+            boton.textContent = "⏸ Pausar música";
+
+        } else {
+
+            musica.pause();
+
+            boton.textContent = "▶ Música";
+
+        }
+
+    });
+
+});
+
