@@ -10,23 +10,39 @@ let jugadores = [];
    (Luego se reemplazan por Google Sheets)
 =========================== */
 
-jugadores = [
+const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4GqnlC8w4N2kKM2d6m-8Ebb9GdpAU7ij4k0u-h43OIDZ9mzMn_8ivXAt0R6t2Sj0sXbgOdIyTcOsV/pub?gid=84825016&single=true&output=csv";
 
-    { jugador:"David AC", puntos:350 },
+async function cargarDatos(){
 
-    { jugador:"Felipe", puntos:335 },
+    const respuesta = await fetch(URL_CSV);
 
-    { jugador:"Sergio", puntos:320 },
+    const texto = await respuesta.text();
 
-    { jugador:"Carlos", puntos:300 },
+    const filas = texto.trim().split("\n").slice(1);
 
-    { jugador:"Juan", puntos:285 },
+    jugadores = filas.map(fila=>{
 
-    { jugador:"Andrés", puntos:270 },
+        const datos = fila.split(",");
 
-    { jugador:"Mateo", puntos:255 }
+        return{
 
-];
+            jugador:datos[0],
+
+            puntos:Number(datos[1])
+
+        };
+
+    });
+
+    cargarRanking();
+
+    actualizarTop3();
+
+    actualizarEstadisticas();
+
+}
+
+cargarDatos();
 
 /* ===========================
    CARGAR RANKING
