@@ -69,3 +69,42 @@ function mostrarRanking() {
     });
 
 }
+
+/* ==========================================
+   TOP 3
+========================================== */
+
+function actualizarTop3() {
+
+    if (jugadores.length < 3) return;
+
+    document.getElementById("primeroNombre").textContent = jugadores[0].jugador;
+    document.getElementById("primeroPuntos").textContent = jugadores[0].puntos + " pts";
+
+    document.getElementById("segundoNombre").textContent = jugadores[1].jugador;
+    document.getElementById("segundoPuntos").textContent = jugadores[1].puntos + " pts";
+
+    document.getElementById("terceroNombre").textContent = jugadores[2].jugador;
+    document.getElementById("terceroPuntos").textContent = jugadores[2].puntos + " pts";
+
+}
+
+/* ==========================================
+   ESTADÍSTICAS
+========================================== */
+
+function actualizarEstadisticas() {
+
+    document.getElementById("totalJugadores").textContent = jugadores.length;
+
+    document.getElementById("liderActual").textContent =
+        jugadores.length ? jugadores[0].jugador : "-";
+
+    const total = jugadores.reduce((a, b) => a + b.puntos, 0);
+
+    document.getElementById("totalPuntos").textContent = total;
+
+    document.getElementById("promedioPuntos").textContent =
+        jugadores.length ? (total / jugadores.length).toFixed(1) : 0;
+
+}
