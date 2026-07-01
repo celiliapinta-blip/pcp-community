@@ -89,6 +89,7 @@ function mostrarSalonFama() {
                 <h3>🏆 ${registro.temporada}</h3>
                 <p><strong>Campeón:</strong> ${registro.campeon}</p>
 <p><strong>equipo:</strong> ${registro.puntos}</p>
+
             </div>
         `;
     });
