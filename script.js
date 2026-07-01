@@ -244,7 +244,7 @@ iniciar();
 setInterval(iniciar, 10000);
 
 /* ==========================================
-   🎵 MÚSICA DE FONDO (BOTÓN CONTROL)
+   🎵 MÚSICA DE FONDO
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -254,22 +254,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!botonMusica || !musica) return;
 
-    let reproduciendo = false;
-
     botonMusica.addEventListener("click", () => {
 
-        if (!reproduciendo) {
+        if (musica.paused) {
 
             musica.volume = 0.3;
             musica.play();
-            reproduciendo = true;
 
             botonMusica.textContent = "⏸ Pausar música";
 
         } else {
 
             musica.pause();
-            reproduciendo = false;
 
             botonMusica.textContent = "▶ Reanudar música";
 
