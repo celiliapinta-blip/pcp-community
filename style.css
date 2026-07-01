@@ -17,7 +17,11 @@ body{
 
     font-family:Arial, Helvetica, sans-serif;
 
-    background:#08111d;
+    background:
+        url("logo.png") no-repeat center center fixed,
+        #08111d;
+
+    background-size:300px;
 
     color:#ffffff;
 
