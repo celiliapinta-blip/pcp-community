@@ -274,14 +274,16 @@ if (buscador) {
 
 async function iniciar() {
 
+    alert("Script funcionando");
+
     await cargarRanking();
     await cargarSalonFama();
     await cargarHistorial();
 
     const ahora = new Date();
 
-    
-
+    ...
+}
     document.getElementById("ultimaActualizacion").textContent =
     "Última actualización: " + ahora.toLocaleString();
 
