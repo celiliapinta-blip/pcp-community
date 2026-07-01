@@ -108,6 +108,22 @@ function mostrarRanking() {
 
     jugadores.forEach((jugador, index) => {
 
+        let cambio = "➖";
+
+        const anterior = rankingAnterior.findIndex(
+            j => j.jugador === jugador.jugador
+        );
+
+        if (anterior !== -1) {
+
+            if (anterior > index) {
+                cambio = "📈";
+            } else if (anterior < index) {
+                cambio = "📉";
+            }
+
+        }
+
         const clase =
             index === 0 ? "fila-oro" :
             index === 1 ? "fila-plata" :
@@ -116,12 +132,23 @@ function mostrarRanking() {
 
         tabla.innerHTML += `
         <tr class="${clase}">
-            <td>${index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}</td>
+            <td>
+                ${
+                    index === 0 ? "🥇" :
+                    index === 1 ? "🥈" :
+                    index === 2 ? "🥉" :
+                    index + 1
+                }
+                ${cambio}
+            </td>
             <td>${jugador.jugador}</td>
             <td>${jugador.puntos}</td>
         </tr>
         `;
     });
+
+    // guardar estado actual
+    rankingAnterior = [...jugadores];
 }
 
 /* ==========================================
