@@ -123,3 +123,7 @@ function actualizarEstadisticas(){
 =========================== */
 
 cargarDatos();
+
+setInterval(() => {
+    cargarDatos();
+}, 10000); // cada 10 segundos
