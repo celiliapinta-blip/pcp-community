@@ -129,3 +129,30 @@ async function iniciar() {
 ========================================== */
 
 iniciar();
+
+/* ==========================================
+   BUSCADOR
+========================================== */
+
+const buscador = document.getElementById("buscarJugador");
+
+if (buscador) {
+
+    buscador.addEventListener("input", function () {
+
+        const texto = this.value.toLowerCase();
+
+        const filas = document.querySelectorAll("#tablaRanking tr");
+
+        filas.forEach(fila => {
+
+            const jugador = fila.children[1].textContent.toLowerCase();
+
+            fila.style.display = jugador.includes(texto) ? "" : "none";
+
+        });
+
+    });
+
+}
+
