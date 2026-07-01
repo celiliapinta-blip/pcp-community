@@ -129,7 +129,7 @@ function mostrarRanking() {
 
         tabla.innerHTML += `
         <tr>
-            <td>${index + 1}</td>
+            <td>${index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}</td>
             <td>${jugador.jugador}</td>
             <td>${jugador.puntos}</td>
         </tr>
