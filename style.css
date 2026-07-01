@@ -233,4 +233,156 @@ tbody tr:last-child td{
 
     border-bottom:none;
 
+}/* ==========================================
+   TOP 3
+========================================== */
+
+#top3{
+
+    background:rgba(20,30,48,.95);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.podio{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+}
+
+.podio-card{
+
+    width:220px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:25px 20px;
+
+    background:#132238;
+
+    transition:.3s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.podio-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.podio-card .puesto{
+
+    font-size:40px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+}
+
+.podio-card h3{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+.podio-card p{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+/* Primer lugar */
+
+.primero{
+
+    background:linear-gradient(180deg,#f8d24b,#b8860b);
+
+    color:#111;
+
+    transform:scale(1.08);
+
+}
+
+.primero:hover{
+
+    transform:scale(1.12);
+
+}
+
+/* Segundo lugar */
+
+.segundo{
+
+    background:linear-gradient(180deg,#d8d8d8,#8e8e8e);
+
+    color:#111;
+
+}
+
+/* Tercer lugar */
+
+.tercero{
+
+    background:linear-gradient(180deg,#d08b45,#8b5a2b);
+
+    color:white;
+
+}
+
+/* CELULAR */
+
+@media(max-width:768px){
+
+    .podio{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .podio-card{
+
+        width:100%;
+
+        max-width:320px;
+
+    }
+
+    .primero{
+
+        transform:none;
+
+    }
+
+    .primero:hover{
+
+        transform:none;
+
+    }
+
 }
