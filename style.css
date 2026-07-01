@@ -13,19 +13,22 @@ html{
     scroll-behavior:smooth;
 }
 
-body{
+body::before{
 
-    font-family:Arial, Helvetica, sans-serif;
+    content:"";
 
-    background:
-        url("logo.png") no-repeat center center fixed,
-        #08111d;
+    position:fixed;
 
-    background-size:300px;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
 
-    color:#ffffff;
+    background:url("logo.png") center/300px no-repeat;
 
-    overflow-x:hidden;
+    opacity:0.08;
+
+    z-index:-1;
 
 }
 
