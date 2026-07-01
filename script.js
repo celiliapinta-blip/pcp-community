@@ -127,6 +127,32 @@ function mostrarSalonFama() {
 }
 
 /* ==========================================
+   MOSTRAR HISTORIAL
+========================================== */
+
+function mostrarHistorial() {
+
+    const tabla = document.getElementById("tablaHistorial");
+
+    if (!tabla) return;
+
+    tabla.innerHTML = "";
+
+    historial.forEach(registro => {
+
+        tabla.innerHTML += `
+        <tr>
+            <td>${registro.temporada}</td>
+            <td>${registro.campeon}</td>
+            <td>${registro.pais}</td>
+        </tr>
+        `;
+
+    });
+
+}
+
+/* ==========================================
    MOSTRAR RANKING
 ========================================== */
 
