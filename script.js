@@ -73,6 +73,28 @@ async function cargarSalonFama() {
 
     mostrarSalonFama();
 
+async function cargarHistorial() {
+
+    const respuesta = await fetch(URL_HISTORIAL);
+    const texto = await respuesta.text();
+
+    const filas = texto.trim().split("\n").slice(1);
+
+    historial = filas.map(fila => {
+
+        const datos = fila.split(/,|;/);
+
+        return {
+            temporada: datos[0]?.trim() || "",
+            campeon: datos[1]?.trim() || "",
+            pais: datos[2]?.trim() || ""
+        };
+
+    }).filter(h => h.temporada !== "");
+
+    mostrarHistorial();
+}
+
 }
 
 /* ==========================================
