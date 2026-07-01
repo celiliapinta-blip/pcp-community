@@ -220,8 +220,12 @@ if (buscador) {
 async function iniciar() {
 
     await cargarRanking();
-
     await cargarSalonFama();
+
+    const ahora = new Date();
+
+    document.getElementById("ultimaActualizacion").textContent =
+    "Última actualización: " + ahora.toLocaleString();
 
 }
 
