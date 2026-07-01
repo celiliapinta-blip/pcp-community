@@ -14,18 +14,38 @@ const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4GqnlC8w4N2kK
 
 async function cargarDatos(){
 
-    const respuesta = await fetch(URL_CSV);
+    try{
 
-    const texto = await respuesta.text();
+        const respuesta = await fetch(URL_CSV);
+        const texto = await respuesta.text();
 
-    const filas = texto.trim().split("\n").slice(1);
+        const filas = texto.trim().split("\n").slice(1);
 
-    jugadores = filas.map(fila=>{
-    const datos = fila.split(",");
-    return{
-        jugador:datos[0],
-        puntos:Number(datos[1])
-    };
+        jugadores = filas.map(fila => {
+
+            const datos = fila.split(/,|;/);
+
+            return {
+                jugador: datos[0]?.trim(),
+                puntos: Number(datos[1])
+            };
+
+        }).filter(j => j.jugador && !isNaN(j.puntos))
+          .sort((a,b)=>b.puntos - a.puntos);
+
+        cargarRanking();
+        actualizarTop3();
+        actualizarEstadisticas();
+
+    } catch (error){
+
+        console.error("Error cargando datos:", error);
+
+    }
+
+}
+
+cargarDatos();
 }).sort((a,b)=>b.puntos - a.puntos);
 
     });
