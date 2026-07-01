@@ -45,6 +45,33 @@ async function cargarRanking() {
 }
 
 /* ==========================================
+   CARGAR SALÓN DE LA FAMA
+========================================== */
+
+async function cargarSalonFama() {
+
+    const respuesta = await fetch(URL_FAMA);
+    const texto = await respuesta.text();
+
+    const filas = texto.trim().split("\n").slice(1);
+
+    salonFama = filas.map(fila => {
+
+        const datos = fila.split(/,|;/);
+
+        return {
+            temporada: datos[0]?.trim() || "",
+            campeon: datos[1]?.trim() || "",
+            equipo: datos[2]?.trim() || ""
+        };
+
+    }).filter(f => f.temporada !== "");
+
+    mostrarSalonFama();
+
+}
+
+/* ==========================================
    MOSTRAR RANKING
 ========================================== */
 
@@ -64,6 +91,32 @@ function mostrarRanking() {
             <td>${jugador.jugador}</td>
             <td>${jugador.puntos}</td>
         </tr>
+        `;
+
+    });
+
+}
+
+/* ==========================================
+   MOSTRAR SALÓN DE LA FAMA
+========================================== */
+
+function mostrarSalonFama() {
+
+    const contenedor = document.getElementById("salonFama");
+
+    if (!contenedor) return;
+
+    contenedor.innerHTML = "";
+
+    salonFama.forEach(registro => {
+
+        contenedor.innerHTML += `
+        <div class="fama-card">
+            <h3>🏆 ${registro.temporada}</h3>
+            <p><strong>Campeón:</strong> ${registro.campeon}</p>
+            <p><strong>Equipo:</strong> ${registro.equipo}</p>
+        </div>
         `;
 
     });
@@ -116,6 +169,7 @@ function actualizarEstadisticas() {
 async function iniciar() {
 
     await cargarRanking();
+    await cargarSalonFama();
 
     const ahora = new Date();
 
