@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -25,25 +24,15 @@
 <header class="header">
 
 <div class="logo">
-
 <h1>⚽ PCP Community</h1>
-
 <p>Ranking Oficial</p>
-
 </div>
 
 <nav>
-
 <a href="#ranking">Ranking</a>
-
 <a href="#top3">Top 3</a>
-
 <a href="#estadisticas">Estadísticas</a>
-
 <a href="#salon">Salón de la Fama</a>
-
-<a href="#historial">Historial</a>
-
 </nav>
 
 </header>
@@ -51,6 +40,7 @@
 <section class="hero">
 
 <h2>Temporada Oficial</h2>
+
 <p>Consulta el ranking actualizado automáticamente desde Google Sheets.</p>
 
 <button id="btnMusica">▶ Música</button>
@@ -73,13 +63,9 @@ placeholder="Buscar jugador...">
 <thead>
 
 <tr>
-
 <th>#</th>
-
 <th>Jugador</th>
-
 <th>Puntos</th>
-
 </tr>
 
 </thead>
@@ -101,33 +87,21 @@ placeholder="Buscar jugador...">
 <div class="podio">
 
 <div class="podio-card plata">
-
 <h3>🥈</h3>
-
 <h4 id="segundoNombre">-</h4>
-
 <p id="segundoPuntos">0 pts</p>
-
 </div>
 
 <div class="podio-card oro">
-
 <h3>🥇</h3>
-
 <h4 id="primeroNombre">-</h4>
-
 <p id="primeroPuntos">0 pts</p>
-
 </div>
 
 <div class="podio-card bronce">
-
 <h3>🥉</h3>
-
 <h4 id="terceroNombre">-</h4>
-
 <p id="terceroPuntos">0 pts</p>
-
 </div>
 
 </div>
@@ -141,40 +115,28 @@ placeholder="Buscar jugador...">
 <div class="estadisticas-grid">
 
 <div class="estadistica-card">
-
 <h3>Total de jugadores</h3>
-
 <p id="totalJugadores">0</p>
-
 </div>
 
 <div class="estadistica-card">
-
 <h3>Líder actual</h3>
-
 <p id="liderActual">-</p>
-
 </div>
 
 <div class="estadistica-card">
-
 <h3>Total de puntos</h3>
-
 <p id="totalPuntos">0</p>
-
 </div>
 
 <div class="estadistica-card">
-
 <h3>Promedio de puntos</h3>
-
 <p id="promedioPuntos">0</p>
+</div>
 
 </div>
 
 <p id="ultimaActualizacion">Última actualización: --</p>
-
-</div>
 
 </section>
 
@@ -183,42 +145,6 @@ placeholder="Buscar jugador...">
 <h2>🌟 Salón de la Fama</h2>
 
 <div id="salonFama" class="salon-grid">
-
-<div class="fama-card">
-
-<h3>Sin registros</h3>
-
-<p>Agrega campeones desde Google Sheets</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="historial" class="contenedor">
-
-<h2>📚 Historial de Temporadas</h2>
-
-<div class="tabla">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Temporada</th>
-<th>Campeón</th>
-<th>País</th>
-</tr>
-
-</thead>
-
-<tbody id="tablaHistorial">
-
-</tbody>
-
-</table>
 
 </div>
 
@@ -230,12 +156,12 @@ placeholder="Buscar jugador...">
 
 </footer>
 
-<!-- MÚSICA DE FONDO -->
 <audio id="bgMusic" loop>
-    <source src="mi-cancion.mp3" type="audio/mpeg">
+<source src="mi-cancion.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
