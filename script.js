@@ -60,10 +60,10 @@ async function cargarSalonFama() {
         const datos = fila.split(/,|;/);
 
         return {
-            temporada: datos[0]?.trim() || "",
-            campeon: datos[1]?.trim() || "",
-            equipo: datos[2]?.trim() || ""
-        };
+    temporada: datos[0]?.trim() || "",
+    campeon: datos[1]?.trim() || "",
+    puntos: datos[2]?.trim() || ""
+};
 
     }).filter(f => f.temporada !== "");
 
