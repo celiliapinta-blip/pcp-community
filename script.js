@@ -17,6 +17,7 @@ const URL_HISTORIAL =
 
 let jugadores = [];
 let salonFama = [];
+let historial = [];
 let rankingAnterior = [];
 
 /* ==========================================
