@@ -136,19 +136,13 @@ function mostrarHistorial() {
 
     if (!tabla) return;
 
-    tabla.innerHTML = "";
-
-    historial.forEach(registro => {
-
-        tabla.innerHTML += `
+    tabla.innerHTML = `
         <tr>
-            <td>${registro.temporada}</td>
-            <td>${registro.campeon}</td>
-            <td>${registro.pais}</td>
+            <td>PRUEBA</td>
+            <td>Funciona</td>
+            <td>✅</td>
         </tr>
-        `;
-
-    });
+    `;
 
 }
 
