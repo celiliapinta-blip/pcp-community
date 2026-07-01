@@ -127,8 +127,14 @@ function mostrarRanking() {
 
     jugadores.forEach((jugador, index) => {
 
+        const clase =
+            index === 0 ? "fila-oro" :
+            index === 1 ? "fila-plata" :
+            index === 2 ? "fila-bronce" :
+            "";
+
         tabla.innerHTML += `
-        <tr>
+        <tr class="${clase}">
             <td>${index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}</td>
             <td>${jugador.jugador}</td>
             <td>${jugador.puntos}</td>
