@@ -1,20 +1,29 @@
-/* ===========================
-   CONFIGURACIÓN GOOGLE SHEETS
-=========================== */
+/* ==========================================
+   PCP COMMUNITY 2.0
+========================================== */
 
-const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vShb4DKAUEbkv1-6pi52xScA7MBtA0T5K78A2uwVGj0o5d70u2guNiE3VGpC2CZ5nnkmKgo-vcYairQ/pub?gid=1843627779&single=true&output=csv";
+// ---------- GOOGLE SHEETS ----------
+
+const URL_RANKING =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vShb4DKAUEbkv1-6pi52xScA7MBtA0T5K78A2uwVGj0o5d70u2guNiE3VGpC2CZ5nnkmKgo-vcYairQ/pub?gid=1843627779&single=true&output=csv";
+
+const URL_FAMA =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vShb4DKAUEbkv1-6pi52xScA7MBtA0T5K78A2uwVGj0o5d70u2guNiE3VGpC2CZ5nnkmKgo-vcYairQ/pub?gid=1002334291&single=true&output=csv";
+
+// ---------- VARIABLES ----------
 
 let jugadores = [];
+let salonFama = [];
 
-/* ===========================
-   CARGAR DATOS DESDE SHEETS
-=========================== */
+/* ==========================================
+   CARGAR RANKING
+========================================== */
 
-async function cargarDatos(){
+async function cargarRanking() {
 
-    try{
+    try {
 
-        const respuesta = await fetch(URL_CSV);
+        const respuesta = await fetch(URL_RANKING);
         const texto = await respuesta.text();
 
         const filas = texto.trim().split("\n").slice(1);
@@ -24,45 +33,105 @@ async function cargarDatos(){
             const datos = fila.split(/,|;/);
 
             return {
-                jugador: datos[0]?.trim(),
-                puntos: Number(datos[1])
+                jugador: datos[0]?.trim() || "",
+                puntos: Number(datos[1]) || 0
             };
 
-        })
-        .filter(j => j.jugador && !isNaN(j.puntos))
-        .sort((a,b)=>b.puntos - a.puntos);
+        }).filter(j => j.jugador !== "")
+          .sort((a, b) => b.puntos - a.puntos);
 
-        cargarRanking();
+        mostrarRanking();
         actualizarTop3();
         actualizarEstadisticas();
 
-    } catch (error){
+    } catch (error) {
 
-        console.error("Error cargando datos:", error);
+        console.error("Error cargando el ranking:", error);
 
     }
 
 }
 
-/* ===========================
-   RANKING
-=========================== */
+/* ==========================================
+   CARGAR SALÓN DE LA FAMA
+========================================== */
 
-function cargarRanking(){
+async function cargarSalonFama() {
+
+    try {
+
+        const respuesta = await fetch(URL_FAMA);
+        const texto = await respuesta.text();
+
+        const filas = texto.trim().split("\n").slice(1);
+
+        salonFama = filas.map(fila => {
+
+            const datos = fila.split(/,|;/);
+
+            return {
+                temporada: datos[0]?.trim() || "",
+                campeon: datos[1]?.trim() || "",
+                puntos: datos[2]?.trim() || ""
+            };
+
+        }).filter(f => f.temporada !== "");
+
+        mostrarSalonFama();
+
+    } catch (error) {
+
+        console.error("Error cargando el Salón de la Fama:", error);
+
+    }
+
+}
+
+/* ==========================================
+   MOSTRAR SALÓN DE LA FAMA
+========================================== */
+
+function mostrarSalonFama() {
+
+    const contenedor = document.getElementById("salonFama");
+
+    if (!contenedor) return;
+
+    contenedor.innerHTML = "";
+
+    salonFama.forEach(registro => {
+
+        contenedor.innerHTML += `
+            <div class="fama-card">
+                <h3>🏆 ${registro.temporada}</h3>
+                <p><strong>Campeón:</strong> ${registro.campeon}</p>
+                <p><strong>Puntos:</strong> ${registro.puntos}</p>
+            </div>
+        `;
+
+    });
+
+}
+
+/* ==========================================
+   MOSTRAR RANKING
+========================================== */
+
+function mostrarRanking() {
 
     const tabla = document.getElementById("tablaRanking");
 
-    if(!tabla) return;
+    if (!tabla) return;
 
     tabla.innerHTML = "";
 
-    jugadores.forEach((j, index)=>{
+    jugadores.forEach((jugador, index) => {
 
         tabla.innerHTML += `
         <tr>
             <td>${index + 1}</td>
-            <td>${j.jugador}</td>
-            <td>${j.puntos}</td>
+            <td>${jugador.jugador}</td>
+            <td>${jugador.puntos}</td>
         </tr>
         `;
 
@@ -70,60 +139,86 @@ function cargarRanking(){
 
 }
 
-/* ===========================
+/* ==========================================
    TOP 3
-=========================== */
+========================================== */
 
-function actualizarTop3(){
+function actualizarTop3() {
 
-    const top = document.getElementById("top3");
+    if (jugadores.length < 3) return;
 
-    if(!top) return;
+    document.getElementById("primeroNombre").textContent = jugadores[0].jugador;
+    document.getElementById("primeroPuntos").textContent = jugadores[0].puntos + " pts";
 
-    top.innerHTML = "";
+    document.getElementById("segundoNombre").textContent = jugadores[1].jugador;
+    document.getElementById("segundoPuntos").textContent = jugadores[1].puntos + " pts";
 
-    jugadores.slice(0,3).forEach((j,i)=>{
+    document.getElementById("terceroNombre").textContent = jugadores[2].jugador;
+    document.getElementById("terceroPuntos").textContent = jugadores[2].puntos + " pts";
 
-        top.innerHTML += `
-        <div>
-            🏆 ${i+1} ${j.jugador} - ${j.puntos}
-        </div>
-        `;
+}
+
+/* ==========================================
+   ESTADÍSTICAS
+========================================== */
+
+function actualizarEstadisticas() {
+
+    document.getElementById("totalJugadores").textContent = jugadores.length;
+
+    document.getElementById("liderActual").textContent =
+        jugadores.length ? jugadores[0].jugador : "-";
+
+    const total = jugadores.reduce((suma, j) => suma + j.puntos, 0);
+
+    document.getElementById("totalPuntos").textContent = total;
+
+    const promedio = jugadores.length
+        ? (total / jugadores.length).toFixed(1)
+        : 0;
+
+    document.getElementById("promedioPuntos").textContent = promedio;
+
+}
+
+/* ==========================================
+   BUSCADOR
+========================================== */
+
+const buscador = document.getElementById("buscarJugador");
+
+if (buscador) {
+
+    buscador.addEventListener("input", function () {
+
+        const texto = this.value.toLowerCase();
+
+        const filas = document.querySelectorAll("#tablaRanking tr");
+
+        filas.forEach(fila => {
+
+            const jugador = fila.children[1].textContent.toLowerCase();
+
+            fila.style.display = jugador.includes(texto) ? "" : "none";
+
+        });
 
     });
 
 }
 
-/* ===========================
-   ESTADÍSTICAS
-=========================== */
+/* ==========================================
+   INICIAR
+========================================== */
 
-function actualizarEstadisticas(){
+async function iniciar() {
 
-    const total = document.getElementById("totalJugadores");
-    const lider = document.getElementById("liderActual");
-    const puntos = document.getElementById("totalPuntos");
+    await cargarRanking();
 
-    if(total) total.innerText = jugadores.length;
-
-    if(lider) lider.innerText = jugadores[0]?.jugador || "-";
-
-    if(puntos){
-
-        let suma = jugadores.reduce((acc,j)=>acc + j.puntos,0);
-
-        puntos.innerText = suma;
-
-    }
+    await cargarSalonFama();
 
 }
 
-/* ===========================
-   INICIO
-=========================== */
+iniciar();
 
-cargarDatos();
-
-setInterval(() => {
-    cargarDatos();
-}, 10000); // cada 10 segundos
+setInterval(iniciar, 10000);
