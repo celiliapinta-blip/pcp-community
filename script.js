@@ -1,16 +1,14 @@
-/* ==========================================
-   PCP COMMUNITY
-   SCRIPT.JS
-========================================== */
+/* ===========================
+   CONFIGURACIÓN GOOGLE SHEETS
+=========================== */
+
+const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4GqnlC8w4N2kKM2d6m-8Ebb9GdpAU7ij4k0u-h43OIDZ9mzMn_8ivXAt0R6t2Sj0sXbgOdIyTcOsV/pub?gid=84825016&single=true&output=csv";
 
 let jugadores = [];
 
 /* ===========================
-   DATOS DE PRUEBA
-   (Luego se reemplazan por Google Sheets)
+   CARGAR DATOS DESDE SHEETS
 =========================== */
-
-const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4GqnlC8w4N2kKM2d6m-8Ebb9GdpAU7ij4k0u-h43OIDZ9mzMn_8ivXAt0R6t2Sj0sXbgOdIyTcOsV/pub?gid=84825016&single=true&output=csv";
 
 async function cargarDatos(){
 
@@ -30,8 +28,9 @@ async function cargarDatos(){
                 puntos: Number(datos[1])
             };
 
-        }).filter(j => j.jugador && !isNaN(j.puntos))
-          .sort((a,b)=>b.puntos - a.puntos);
+        })
+        .filter(j => j.jugador && !isNaN(j.puntos))
+        .sort((a,b)=>b.puntos - a.puntos);
 
         cargarRanking();
         actualizarTop3();
@@ -45,48 +44,31 @@ async function cargarDatos(){
 
 }
 
-cargarDatos();
-}).sort((a,b)=>b.puntos - a.puntos);
-
-    });
-
-    cargarRanking();
-
-    actualizarTop3();
-
-    actualizarEstadisticas();
-
-}
-
-cargarDatos();
-
 /* ===========================
-   CARGAR RANKING
+   RANKING
 =========================== */
 
 function cargarRanking(){
 
     const tabla = document.getElementById("tablaRanking");
 
-    tabla.innerHTML="";
+    if(!tabla) return;
 
-    jugadores.sort((a,b)=>b.puntos-a.puntos);
+    tabla.innerHTML = "";
 
-    jugadores.forEach((j,index)=>{
+    jugadores.forEach((j, index)=>{
 
         tabla.innerHTML += `
-            <tr>
-                <td>${index+1}</td>
-                <td>${j.jugador}</td>
-                <td>${j.puntos}</td>
-            </tr>
+        <tr>
+            <td>${index + 1}</td>
+            <td>${j.jugador}</td>
+            <td>${j.puntos}</td>
+        </tr>
         `;
 
     });
 
 }
-
-cargarRanking();
 
 /* ===========================
    TOP 3
@@ -94,16 +76,21 @@ cargarRanking();
 
 function actualizarTop3(){
 
-    if(jugadores.length < 3) return;
+    const top = document.getElementById("top3");
 
-    document.getElementById("primeroNombre").textContent = jugadores[0].jugador;
-    document.getElementById("primeroPuntos").textContent = jugadores[0].puntos + " pts";
+    if(!top) return;
 
-    document.getElementById("segundoNombre").textContent = jugadores[1].jugador;
-    document.getElementById("segundoPuntos").textContent = jugadores[1].puntos + " pts";
+    top.innerHTML = "";
 
-    document.getElementById("terceroNombre").textContent = jugadores[2].jugador;
-    document.getElementById("terceroPuntos").textContent = jugadores[2].puntos + " pts";
+    jugadores.slice(0,3).forEach((j,i)=>{
+
+        top.innerHTML += `
+        <div>
+            🏆 ${i+1} ${j.jugador} - ${j.puntos}
+        </div>
+        `;
+
+    });
 
 }
 
@@ -113,46 +100,26 @@ function actualizarTop3(){
 
 function actualizarEstadisticas(){
 
-    const totalJugadores = jugadores.length;
+    const total = document.getElementById("totalJugadores");
+    const lider = document.getElementById("lider");
+    const puntos = document.getElementById("totalPuntos");
 
-    const totalPuntos = jugadores.reduce((suma,j)=>suma+j.puntos,0);
+    if(total) total.innerText = jugadores.length;
 
-    const promedio = Math.round(totalPuntos/totalJugadores);
+    if(lider) lider.innerText = jugadores[0]?.jugador || "-";
 
-    document.getElementById("totalJugadores").textContent = totalJugadores;
+    if(puntos){
 
-    document.getElementById("liderActual").textContent = jugadores[0].jugador;
+        let suma = jugadores.reduce((acc,j)=>acc + j.puntos,0);
 
-    document.getElementById("totalPuntos").textContent = totalPuntos;
+        puntos.innerText = suma;
 
-    document.getElementById("promedioPuntos").textContent = promedio;
+    }
 
 }
 
 /* ===========================
-   BÚSQUEDA
+   INICIO
 =========================== */
 
-document
-.getElementById("buscarJugador")
-.addEventListener("input",function(){
-
-    const texto=this.value.toLowerCase();
-
-    const filas=document.querySelectorAll("#tablaRanking tr");
-
-    filas.forEach(fila=>{
-
-        const jugador=fila.children[1].textContent.toLowerCase();
-
-        fila.style.display=jugador.includes(texto) ? "" : "none";
-
-    });
-
-});
-
-/* ===========================
-   INICIAR
-=========================== */
-
-actualización del script
+cargarDatos();
