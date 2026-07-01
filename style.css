@@ -1,224 +1,236 @@
-/* ===========================
-   CONFIGURACIÓN GENERAL
-=========================== */
+/* ==========================================
+   PCP COMMUNITY - ESTILOS PRINCIPALES
+========================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b1220;
-    color: #ffffff;
-    line-height: 1.6;
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#07111f;
+    color:#ffffff;
+    line-height:1.6;
 }
 
-/* ===========================
-   ENCABEZADO
-=========================== */
+/* CONTENEDOR */
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    background: #111827;
-
-    padding: 20px;
-
-    text-align: center;
-
-    border-bottom: 2px solid #d4af37;
+.contenedor{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
 }
 
-header h1 {
-    margin-bottom: 15px;
-    color: #ffffff;
+/* HEADER */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(8,16,30,.95);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 5%;
 }
 
-/* ===========================
-   MENÚ
-=========================== */
-
-nav {
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 15px;
+.logo h1{
+    color:#fff;
+    font-size:28px;
 }
 
-nav a {
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    padding: 10px 18px;
-
-    border-radius: 8px;
-
-    transition: .3s;
+.menu{
+    display:flex;
+    gap:15px;
 }
 
-nav a:hover {
-    background: #d4af37;
-    color: black;
-}
-
-/* ===========================
-   SECCIONES
-=========================== */
-
-section {
-    width: 90%;
-    max-width: 1100px;
-
-    margin: 40px auto;
-
-    background: #161f31;
-
-    border-radius: 15px;
-
-    padding: 25px;
-}
-
-section h2 {
-    margin-bottom: 20px;
-
-    color: #d4af37;
-}
-
-/* ===========================
-   RANKING
-=========================== */
-
-#buscarJugador{
-    width:100%;
-    padding:14px;
-    border:none;
-    outline:none;
-    border-radius:12px;
-    margin-bottom:20px;
-    font-size:16px;
-    background:#222d42;
+.menu a{
     color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:10px;
+    transition:.3s;
+    font-weight:bold;
 }
 
-#buscarJugador::placeholder{
-    color:#b8b8b8;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    overflow:hidden;
-    border-radius:12px;
-}
-
-thead{
+.menu a:hover{
     background:#d4af37;
     color:#111;
 }
 
-th{
-    padding:15px;
-    font-size:17px;
+/* HERO */
+
+.hero{
+
+    min-height:300px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    background:
+    linear-gradient(rgba(6,14,28,.75),
+    rgba(6,14,28,.88));
+
 }
 
-td{
-    padding:15px;
+.hero h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#d0d0d0;
+    font-size:18px;
+}
+
+/* SECCIONES */
+
+section{
+
+    margin-top:45px;
+
+    margin-bottom:45px;
+
+}
+
+section h2{
+
+    margin-bottom:20px;
+
+    color:#d4af37;
+
+    font-size:30px;
+
+}
+
+/* ==========================================
+   RANKING
+========================================== */
+
+#ranking{
+
+    background:rgba(20,30,48,.95);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+#buscarJugador{
+
+    width:100%;
+
+    padding:16px 20px;
+
+    margin-bottom:25px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:#0d1b2f;
+
+    color:white;
+
+    font-size:16px;
+
+    border:2px solid transparent;
+
+    transition:.3s;
+
+}
+
+#buscarJugador:focus{
+
+    border-color:#d4af37;
+
+}
+
+#buscarJugador::placeholder{
+
+    color:#9ca3af;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+}
+
+thead{
+
+    background:#d4af37;
+
+}
+
+thead th{
+
+    color:#111;
+
+    font-size:17px;
+
+    padding:18px;
+
+}
+
+tbody td{
+
+    padding:16px;
+
     text-align:center;
-    background:#1b263b;
-    border-bottom:1px solid #2e3b55;
+
+    background:#132238;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
 }
 
 tbody tr{
-    transition:.3s;
-}
 
-tbody tr:hover{
-    background:#25334d;
+    transition:.25s;
+
 }
 
 tbody tr:hover td{
-    background:#25334d;
+
+    background:#1a3150;
+
 }
 
-/* ===========================
-   TOP 3
-=========================== */
+tbody tr:last-child td{
 
-#top3{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-#primerLugar,
-#segundoLugar,
-#tercerLugar{
-    background:#1b263b;
-    border-radius:12px;
-    padding:20px;
-    text-align:center;
-    border-left:5px solid #d4af37;
-}
-
-/* ===========================
-   ESTADÍSTICAS
-=========================== */
-
-#estadisticasContenido{
-    background:#1b263b;
-    border-radius:12px;
-    padding:20px;
-}
-
-/* ===========================
-   SALÓN DE LA FAMA
-=========================== */
-
-#salonContenido{
-    background:#1b263b;
-    border-radius:12px;
-    padding:20px;
-}
-
-/* ===========================
-   CELULAR
-=========================== */
-
-@media(max-width:768px){
-
-    header h1{
-        font-size:26px;
-    }
-
-    nav{
-        gap:10px;
-    }
-
-    nav a{
-        width:100%;
-    }
-
-    table{
-        font-size:14px;
-    }
-
-    th,
-    td{
-        padding:10px;
-    }
+    border-bottom:none;
 
 }
