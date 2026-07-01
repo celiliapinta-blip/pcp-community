@@ -2,7 +2,7 @@
    CONFIGURACIÓN GOOGLE SHEETS
 =========================== */
 
-const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4GqnlC8w4N2kKM2d6m-8Ebb9GdpAU7ij4k0u-h43OIDZ9mzMn_8ivXAt0R6t2Sj0sXbgOdIyTcOsV/pub?gid=84825016&single=true&output=csv";
+const URL_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vShb4DKAUEbkv1-6pi52xScA7MBtA0T5K78A2uwVGj0o5d70u2guNiE3VGpC2CZ5nnkmKgo-vcYairQ/pub?gid=1843627779&single=true&output=csv";
 
 let jugadores = [];
 
