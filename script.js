@@ -157,16 +157,20 @@ function mostrarRanking() {
 
 function actualizarTop3() {
 
-    if (jugadores.length < 3) return;
+    if (!jugadores || jugadores.length < 3) return;
 
-    document.getElementById("primeroNombre").textContent = jugadores[0].jugador;
-    document.getElementById("primeroPuntos").textContent = jugadores[0].puntos + " pts";
+    // 🔥 Asegurar orden correcto SIEMPRE
+    const ordenados = [...jugadores].sort((a, b) => b.puntos - a.puntos);
 
-    document.getElementById("segundoNombre").textContent = jugadores[1].jugador;
-    document.getElementById("segundoPuntos").textContent = jugadores[1].puntos + " pts";
+    document.getElementById("primeroNombre").textContent = ordenados[0].jugador;
+    document.getElementById("primeroPuntos").textContent = ordenados[0].puntos + " pts";
 
-    document.getElementById("terceroNombre").textContent = jugadores[2].jugador;
-    document.getElementById("terceroPuntos").textContent = jugadores[2].puntos + " pts";
+    document.getElementById("segundoNombre").textContent = ordenados[1].jugador;
+    document.getElementById("segundoPuntos").textContent = ordenados[1].puntos + " pts";
+
+    document.getElementById("terceroNombre").textContent = ordenados[2].jugador;
+    document.getElementById("terceroPuntos").textContent = ordenados[2].puntos + " pts";
+
 }
 
 /* ==========================================
