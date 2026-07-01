@@ -21,35 +21,26 @@ let salonFama = [];
 
 async function cargarRanking() {
 
-    try {
+    const respuesta = await fetch(URL_RANKING);
+    const texto = await respuesta.text();
 
-        const respuesta = await fetch(URL_RANKING);
-        const texto = await respuesta.text();
+    const filas = texto.trim().split("\n").slice(1);
 
-        const filas = texto.trim().split("\n").slice(1);
+    jugadores = filas.map(fila => {
 
-        jugadores = filas.map(fila => {
+        const datos = fila.split(/,|;/);
 
-            const datos = fila.split(/,|;/);
+        return {
+            jugador: datos[0]?.trim() || "",
+            puntos: Number(datos[1]) || 0
+        };
 
-            return {
-                jugador: datos[0]?.trim() || "",
-                puntos: Number(datos[1]) || 0
-            };
+    }).filter(j => j.jugador !== "")
+      .sort((a, b) => b.puntos - a.puntos);
 
-        }).filter(j => j.jugador !== "")
-          .sort((a, b) => b.puntos - a.puntos);
-
-        mostrarRanking();
-        actualizarTop3();
-        actualizarEstadisticas();
-
-    } catch (error) {
-
-        console.error("Error cargando el ranking:", error);
-
-    }
-
+    mostrarRanking();
+    actualizarTop3();
+    actualizarEstadisticas();
 }
 
 /* ==========================================
@@ -58,33 +49,24 @@ async function cargarRanking() {
 
 async function cargarSalonFama() {
 
-    try {
+    const respuesta = await fetch(URL_FAMA);
+    const texto = await respuesta.text();
 
-        const respuesta = await fetch(URL_FAMA);
-        const texto = await respuesta.text();
+    const filas = texto.trim().split("\n").slice(1);
 
-        const filas = texto.trim().split("\n").slice(1);
+    salonFama = filas.map(fila => {
 
-        salonFama = filas.map(fila => {
+        const datos = fila.split(/,|;/);
 
-            const datos = fila.split(/,|;/);
+        return {
+            temporada: datos[0]?.trim() || "",
+            campeon: datos[1]?.trim() || "",
+            puntos: datos[2]?.trim() || ""
+        };
 
-            return {
-                temporada: datos[0]?.trim() || "",
-                campeon: datos[1]?.trim() || "",
-                puntos: datos[2]?.trim() || ""
-            };
+    }).filter(f => f.temporada !== "");
 
-        }).filter(f => f.temporada !== "");
-
-        mostrarSalonFama();
-
-    } catch (error) {
-
-        console.error("Error cargando el Salón de la Fama:", error);
-
-    }
-
+    mostrarSalonFama();
 }
 
 /* ==========================================
@@ -108,9 +90,7 @@ function mostrarSalonFama() {
                 <p><strong>Puntos:</strong> ${registro.puntos}</p>
             </div>
         `;
-
     });
-
 }
 
 /* ==========================================
@@ -140,9 +120,7 @@ function mostrarRanking() {
             <td>${jugador.puntos}</td>
         </tr>
         `;
-
     });
-
 }
 
 /* ==========================================
@@ -161,7 +139,6 @@ function actualizarTop3() {
 
     document.getElementById("terceroNombre").textContent = jugadores[2].jugador;
     document.getElementById("terceroPuntos").textContent = jugadores[2].puntos + " pts";
-
 }
 
 /* ==========================================
@@ -175,16 +152,13 @@ function actualizarEstadisticas() {
     document.getElementById("liderActual").textContent =
         jugadores.length ? jugadores[0].jugador : "-";
 
-    const total = jugadores.reduce((suma, j) => suma + j.puntos, 0);
+    const total = jugadores.reduce((a, b) => a + b.puntos, 0);
 
     document.getElementById("totalPuntos").textContent = total;
 
-    const promedio = jugadores.length
-        ? (total / jugadores.length).toFixed(1)
-        : 0;
+    const promedio = jugadores.length ? (total / jugadores.length).toFixed(1) : 0;
 
     document.getElementById("promedioPuntos").textContent = promedio;
-
 }
 
 /* ==========================================
@@ -206,11 +180,8 @@ if (buscador) {
             const jugador = fila.children[1].textContent.toLowerCase();
 
             fila.style.display = jugador.includes(texto) ? "" : "none";
-
         });
-
     });
-
 }
 
 /* ==========================================
@@ -224,10 +195,17 @@ async function iniciar() {
 
     const ahora = new Date();
 
-    document.getElementById("ultimaActualizacion").textContent =
-    "Última actualización: " + ahora.toLocaleString();
+    const elemento = document.getElementById("ultimaActualizacion");
 
+    if (elemento) {
+        elemento.textContent =
+        "Última actualización: " + ahora.toLocaleString();
+    }
 }
+
+/* ==========================================
+   AUTO UPDATE
+========================================== */
 
 iniciar();
 
