@@ -108,3 +108,24 @@ function actualizarEstadisticas() {
         jugadores.length ? (total / jugadores.length).toFixed(1) : 0;
 
 }
+
+/* ==========================================
+   INICIAR
+========================================== */
+
+async function iniciar() {
+
+    await cargarRanking();
+
+    const ahora = new Date();
+
+    document.getElementById("ultimaActualizacion").textContent =
+        "Última actualización: " + ahora.toLocaleString();
+
+}
+
+/* ==========================================
+   INICIAR AUTOMÁTICAMENTE
+========================================== */
+
+iniciar();
