@@ -247,12 +247,14 @@ setInterval(iniciar, 10000);
    🎵 MÚSICA DE FONDO (BOTÓN CONTROL)
 ========================================== */
 
-const botonMusica = document.getElementById("btnMusica");
-const musica = document.getElementById("bgMusic");
+document.addEventListener("DOMContentLoaded", () => {
 
-let reproduciendo = false;
+    const botonMusica = document.getElementById("btnMusica");
+    const musica = document.getElementById("bgMusic");
 
-if (botonMusica && musica) {
+    if (!botonMusica || !musica) return;
+
+    let reproduciendo = false;
 
     botonMusica.addEventListener("click", () => {
 
@@ -269,10 +271,10 @@ if (botonMusica && musica) {
             musica.pause();
             reproduciendo = false;
 
-            botonMusica.textContent = "▶ Música";
+            botonMusica.textContent = "▶ Reanudar música";
 
         }
 
     });
 
-}
+});
