@@ -21,16 +21,12 @@ async function cargarDatos(){
     const filas = texto.trim().split("\n").slice(1);
 
     jugadores = filas.map(fila=>{
-
-        const datos = fila.split(",");
-
-        return{
-
-            jugador:datos[0],
-
-            puntos:Number(datos[1])
-
-        };
+    const datos = fila.split(",");
+    return{
+        jugador:datos[0],
+        puntos:Number(datos[1])
+    };
+}).sort((a,b)=>b.puntos - a.puntos);
 
     });
 
