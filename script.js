@@ -138,7 +138,3 @@ document
 /* ===========================
    INICIAR
 =========================== */
-
-actualizarTop3();
-
-actualizarEstadisticas();
