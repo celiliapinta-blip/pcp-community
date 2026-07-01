@@ -101,7 +101,7 @@ function actualizarTop3(){
 function actualizarEstadisticas(){
 
     const total = document.getElementById("totalJugadores");
-    const lider = document.getElementById("lider");
+    const lider = document.getElementById("liderActual");
     const puntos = document.getElementById("totalPuntos");
 
     if(total) total.innerText = jugadores.length;
