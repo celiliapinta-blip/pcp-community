@@ -386,3 +386,73 @@ tbody tr:last-child td{
     }
 
 }
+
+/* ==========================================
+   ESTADÍSTICAS
+========================================== */
+
+#estadisticas{
+
+    background:rgba(20,30,48,.95);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.estadisticas-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+.estadistica-card{
+
+    background:#132238;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.estadistica-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#d4af37;
+
+}
+
+.estadistica-card h3{
+
+    font-size:18px;
+
+    color:#d4af37;
+
+    margin-bottom:15px;
+
+}
+
+.estadistica-card p{
+
+    font-size:32px;
+
+    font-weight:bold;
+
+}
