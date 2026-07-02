@@ -134,12 +134,12 @@ function mostrarRanking() {
         }
 
         tabla.innerHTML += `
-            <tr class="${clase}">
-                <td>${medalla}</td>
-                <td>${jugador.jugador}</td>
-                <td>${jugador.puntos}</td>
-            </tr>
-        `;
+<tr class="${clase}" onclick="abrirPerfil(${index})">
+    <td>${medalla}</td>
+    <td>${jugador.jugador}</td>
+    <td>${jugador.puntos}</td>
+</tr>
+`;
     });
 }
 
