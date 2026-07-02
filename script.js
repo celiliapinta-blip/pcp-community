@@ -232,6 +232,9 @@ async function iniciar() {
 
 iniciar();
 
+// Actualizar cada 10 segundos
+setInterval(iniciar, 10000);
+
 /* ==========================================
    BUSCADOR
 ========================================== */
