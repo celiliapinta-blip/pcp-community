@@ -118,22 +118,26 @@ function mostrarRanking() {
 
     let clase = "";
     let medalla = index + 1;
+    let movimiento = "➖";
 
-    if (index === 0) {
-        clase = "oro";
-        medalla = "🥇";
-    } else if (index === 1) {
-        clase = "plata";
-        medalla = "🥈";
-    } else if (index === 2) {
-        clase = "bronce";
-        medalla = "🥉";
+    const posicionAnterior = rankingAnterior.findIndex(
+        j => j.jugador === jugador.jugador
+    );
+
+    if (posicionAnterior !== -1) {
+
+        if (posicionAnterior > index) {
+            movimiento = "⬆️";
+        } else if (posicionAnterior < index) {
+            movimiento = "⬇️";
+        }
+
     }
 
     tabla.innerHTML += `
     <tr class="${clase}">
         <td>${medalla}</td>
-        <td>${index === 0 ? "👑 " : ""}${jugador.jugador}</td>
+        <td>${index === 0 ? "👑 " : ""}${jugador.jugador} ${movimiento}</td>
         <td>${jugador.puntos}</td>
     </tr>
     `;
