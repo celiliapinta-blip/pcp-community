@@ -464,47 +464,6 @@ table{
     background: linear-gradient(90deg, #FFD700, #FFF4B0);
     font-weight: bold;
     box-shadow: 0 0 15px rgba(255,215,0,.5);
-    animation: brilloOro 2s infinite;
-    transform: scale(1.02);
-}
-
-#tablaRanking tr.plata {
-    background: linear-gradient(90deg, #C0C0C0, #ECECEC);
-    font-weight: bold;
-    transform: scale(1.01);
-}
-
-#tablaRanking tr.bronce {
-    background: linear-gradient(90deg, #CD7F32, #F3C08A);
-    font-weight: bold;
-    transform: scale(1.01);
-}
-
-/* color del texto en top 3 */
-#tablaRanking tr.oro td,
-#tablaRanking tr.plata td,
-#tablaRanking tr.bronce td {
-    color: #111;
-}
-
-/* Animación del líder (oro) */
-@keyframes brilloOro {
-    0% {
-        box-shadow: 0 0 8px rgba(255,215,0,.3);
-    }
-    50% {
-        box-shadow: 0 0 25px rgba(255,215,0,1);
-    }
-    100% {
-        box-shadow: 0 0 8px rgba(255,215,0,.3);
-    }
-}
-
-/* TOP 3 RANKING */
-#tablaRanking tr.oro {
-    background: linear-gradient(90deg, #FFD700, #FFF4B0);
-    font-weight: bold;
-    box-shadow: 0 0 15px rgba(255,215,0,.5);
 }
 
 #tablaRanking tr.plata {
@@ -522,3 +481,4 @@ table{
 #tablaRanking tr.bronce td {
     color: #111;
 }
+
