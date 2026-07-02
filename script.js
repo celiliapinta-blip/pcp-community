@@ -73,6 +73,12 @@ async function cargarSalonFama() {
 
     mostrarSalonFama();
 
+}
+
+/* ==========================================
+   CARGAR HISTORIAL
+========================================== */
+
 async function cargarHistorial() {
 
     const respuesta = await fetch(URL_HISTORIAL);
@@ -93,7 +99,6 @@ async function cargarHistorial() {
     }).filter(h => h.temporada !== "");
 
     mostrarHistorial();
-}
 
 }
 
