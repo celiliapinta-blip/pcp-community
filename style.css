@@ -482,3 +482,29 @@ table{
     color:#fff;
     font-weight:bold;
 }
+
+/* ==========================================
+   TOP 3 DEL RANKING
+========================================== */
+
+#tablaRanking tr.oro {
+    background: linear-gradient(90deg, #FFD700, #FFF4B0);
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255,215,0,.5);
+}
+
+#tablaRanking tr.plata {
+    background: linear-gradient(90deg, #C0C0C0, #ECECEC);
+    font-weight: bold;
+}
+
+#tablaRanking tr.bronce {
+    background: linear-gradient(90deg, #CD7F32, #F3C08A);
+    font-weight: bold;
+}
+
+#tablaRanking tr.oro td,
+#tablaRanking tr.plata td,
+#tablaRanking tr.bronce td {
+    color: #111;
+}
