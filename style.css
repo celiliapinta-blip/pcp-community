@@ -507,3 +507,25 @@ table{
 #tablaRanking tr.bronce td {
     color: #111;
 }
+
+/* ===================================
+   ANIMACIÓN DEL LÍDER
+=================================== */
+
+.lider-brilla {
+    animation: brilloLider 1.5s infinite alternate;
+}
+
+@keyframes brilloLider {
+
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255,215,0,.4);
+    }
+
+    to {
+        transform: scale(1.03);
+        box-shadow: 0 0 30px rgba(255,215,0,1);
+    }
+
+}
