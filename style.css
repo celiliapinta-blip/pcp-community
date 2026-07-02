@@ -456,18 +456,18 @@ table{
     font-size:14px;
 }
 
-/* ==========================================
-   TOP 3 DEL RANKING
-========================================== */
+/* ===============================
+   TOP 3 RANKING (RECONSTRUIDO)
+=============================== */
 
 #tablaRanking tr.oro {
     background: linear-gradient(90deg, #FFD700, #FFF4B0);
     font-weight: bold;
-    box-shadow: 0 0 15px rgba(255,215,0,.5);
+    box-shadow: 0 0 20px rgba(255,215,0,0.6);
 }
 
 #tablaRanking tr.plata {
-    background: linear-gradient(90deg, #C0C0C0, #ECECEC);
+    background: linear-gradient(90deg, #C0C0C0, #F2F2F2);
     font-weight: bold;
 }
 
@@ -476,35 +476,9 @@ table{
     font-weight: bold;
 }
 
+/* texto legible */
 #tablaRanking tr.oro td,
 #tablaRanking tr.plata td,
 #tablaRanking tr.bronce td {
     color: #111;
 }
-
-/* ==========================================
-   TOP 3 DEL RANKING (ARREGLADO)
-========================================== */
-
-#tablaRanking tr.oro {
-    background: linear-gradient(90deg, #FFD700, #FFF4B0) !important;
-    font-weight: bold;
-    box-shadow: 0 0 15px rgba(255,215,0,.6);
-}
-
-#tablaRanking tr.plata {
-    background: linear-gradient(90deg, #C0C0C0, #ECECEC) !important;
-    font-weight: bold;
-}
-
-#tablaRanking tr.bronce {
-    background: linear-gradient(90deg, #CD7F32, #F3C08A) !important;
-    font-weight: bold;
-}
-
-#tablaRanking tr.oro td,
-#tablaRanking tr.plata td,
-#tablaRanking tr.bronce td {
-    color: #111 !important;
-}
-
