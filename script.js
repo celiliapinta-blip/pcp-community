@@ -116,15 +116,29 @@ function mostrarRanking() {
 
     jugadores.forEach((jugador, index) => {
 
-        tabla.innerHTML += `
-        <tr>
-            <td>${index + 1}</td>
-            <td>${jugador.jugador}</td>
-            <td>${jugador.puntos}</td>
-        </tr>
-        `;
+    let clase = "";
+    let medalla = index + 1;
 
-    });
+    if (index === 0) {
+        clase = "oro";
+        medalla = "🥇";
+    } else if (index === 1) {
+        clase = "plata";
+        medalla = "🥈";
+    } else if (index === 2) {
+        clase = "bronce";
+        medalla = "🥉";
+    }
+
+    tabla.innerHTML += `
+    <tr class="${clase}">
+        <td>${medalla}</td>
+        <td>${index === 0 ? "👑 " : ""}${jugador.jugador}</td>
+        <td>${jugador.puntos}</td>
+    </tr>
+    `;
+
+});
 
 }
 
