@@ -149,24 +149,31 @@ function mostrarSalonFama() {
 
 }
 
-function mostrarHistorial() {
+/* ==========================================
+   CARGAR HISTORIAL
+========================================== */
 
-    const tabla = document.getElementById("tablaHistorial");
+async function cargarHistorial() {
 
-    if (!tabla) return;
+    const respuesta = await fetch(URL_HISTORIAL);
+    const texto = await respuesta.text();
 
-    tabla.innerHTML = "";
+    const filas = texto.trim().split("\n").slice(1);
 
-    historial.forEach(h => {
+    historial = filas.map(fila => {
 
-        tabla.innerHTML += `
-            <tr>
-                <td>${h.temporada}</td>
-                <td>${h.campeon}</td>
-                <td>${h.pais}</td>
-            </tr>
-        `;
-    });
+        const datos = fila.split(/,|;/);
+
+        return {
+            temporada: datos[0]?.trim() || "",
+            campeon: datos[1]?.trim() || "",
+            pais: datos[2]?.trim() || ""
+        };
+
+    }).filter(h => h.temporada !== "");
+
+    mostrarHistorial();
+
 }
 
 /* ==========================================
