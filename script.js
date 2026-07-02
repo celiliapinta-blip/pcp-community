@@ -287,3 +287,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/* ==========================================
+   ABRIR PERFIL DEL JUGADOR
+========================================== */
+
+function abrirPerfil(index) {
+
+    const jugador = jugadores[index];
+
+    document.getElementById("perfilNombre").textContent = jugador.jugador;
+
+    document.getElementById("perfilPais").textContent =
+        "🌍 País: " + (jugador.pais || "Desconocido");
+
+    document.getElementById("perfilPuntos").textContent =
+        "🏆 Puntos: " + jugador.puntos;
+
+    document.getElementById("perfilPosicion").textContent =
+        "📊 Posición: " + (index + 1);
+
+    document.getElementById("perfilJugador").style.display = "flex";
+
+}
+
+/* ==========================================
+   CERRAR PERFIL DEL JUGADOR
+========================================== */
+
+document.getElementById("cerrarPerfil").addEventListener("click", () => {
+
+    document.getElementById("perfilJugador").style.display = "none";
+
+});
+
+
+
